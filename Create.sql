@@ -28,19 +28,19 @@ CREATE TABLE IF NOT EXISTS ExecutorsAlbums (
 
 CREATE TABLE IF NOT EXISTS Tracks (
 	track_id serial PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    duration FLOAT,
-    fk_album_id INT REFERENCES Album(album_id) NOT NULL
+  name VARCHAR(100) NOT NULL,
+  duration INT NOT NULL,
+  fk_album_id INT REFERENCES Album(album_id) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Collection(
-    collection_id serial PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    releaseYear INT NOT NULL
+  collection_id serial PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  releaseYear INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS CollectionTracks(
-    fk_collection_id INT REFERENCES Collection(collection_id),
-    fk_track_id INT REFERENCES Tracks(track_id),
-    CONSTRAINT prk PRIMARY KEY (fk_collection_id, fk_track_id)
+  fk_collection_id INT REFERENCES Collection(collection_id),
+  fk_track_id INT REFERENCES Tracks(track_id),
+  CONSTRAINT prk PRIMARY KEY (fk_collection_id, fk_track_id)
 );

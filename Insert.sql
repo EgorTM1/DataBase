@@ -24,23 +24,33 @@ VALUES
 ('A Night at the Opera', 1975),
 ('Thriller', 1982),
 ('Kind of Blue', 1959),
-('Nevermind', 1991);
+('Nevermind', 1991),
+('Love', 2020);
 
 INSERT INTO ExecutorsAlbums(fk_executor_id, fk_album_id)
 VALUES
 (1, 1),
 (2, 2),
 (3, 3),
-(4, 4);
+(4, 4),
+(4, 5);
 
 INSERT INTO Tracks(name, duration, fk_album_id)
 VALUES
-('Bohemian Rhapsody', 5.55, 1),
-('Billie Jean', 4.53, 2),
-('So What', 9.22, 3),
-('Smells Like Teen Spirit', 4.06, 4),
-('We Are the Champions', 3.01, 1),
-('My Love', 3.59, 2);
+('Bohemian Rhapsody', 355, 1),
+('Billie Jean', 293, 2),
+('So What', 562, 3),
+('Smells Like Teen Spirit', 246, 4),
+('We Are the Champions', 181, 1),
+('My Love', 239, 2),
+('my own', 229, 5),
+('own my', 245, 5),
+('my', 234, 5),
+('oh my god', 209, 5),
+('by myself by', 90, 5),
+('beemy', 100, 5),
+('premyne', 123, 5);
+
 
 INSERT INTO Collection(name, releaseYear) 
 VALUES

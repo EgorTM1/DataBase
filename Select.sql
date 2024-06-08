@@ -4,7 +4,7 @@ WHERE duration = (SELECT MAX(Duration) FROM Tracks);
 
 SELECT name
 FROM Tracks
-WHERE duration >= 3.5;
+WHERE duration >= 210;
 
 SELECT name
 FROM Collection
@@ -16,7 +16,8 @@ WHERE name NOT LIKE '% %';
 
 SELECT name
 FROM Tracks
-WHERE name LIKE '%Мой%' OR name LIKE '%My%';
+WHERE name ILIKE 'my %' OR name ILIKE '% my' OR name ILIKE '% my %' OR name ILIKE 'my'
+OR name ILIKE 'мой %' OR name ILIKE '% мой' OR name ILIKE '% мой %' OR name ILIKE 'мой';
 
 
 SELECT g.name, COUNT(ga.fk_executorID)
@@ -38,10 +39,13 @@ GROUP BY a.name;
 
 SELECT e.Name
 FROM Executors e
-LEFT JOIN ExecutorsAlbums aa ON e.executor_id = aa.fk_executor_id
-LEFT JOIN Album al ON aa.fk_album_id = al.album_id
-WHERE al.release_year != 2020
-GROUP BY e.executor_id;
+WHERE e.executor_id NOT IN (
+  SELECT aa.fk_executor_id
+  FROM ExecutorsAlbums aa
+  JOIN Album al ON aa.fk_album_id = al.album_id
+  WHERE al.release_year = 2020
+);
+
 
 SELECT c.name
 FROM Collection c
